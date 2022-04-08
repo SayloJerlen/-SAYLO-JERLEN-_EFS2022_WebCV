@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(207, 242, 243);
+}
+html{
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+p{
+    color: black;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+}
+
+/* HOME */
+#home{
+    background-image: url(./images/homebg.jpg);
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#home::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .1;
+    z-index: -1;
+}
+#home .home{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    justify-content: flex-start;
+}
+#home h1{
+    display: block;
+    width: fit-content;
+    font-size: 8rem;
+    position: relative;
+    color: transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1ss;
+}
+#home h1:nth-child(1){
+    animation-delay: 1s;
+}
+#home h1:nth-child(2){
+    animation-delay: 2s;
+}
+#home h1:nth-child(3){
+    animation: text_reveal_myname .5s ease forwards;
+    animation-delay: 3s;
+}
+
+#home h1 span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #84c0df;
+    animation: text_reveal_box 1s ease;
+    animation-delay: .5s;
+}
+#home h1:nth-child(1) span{
+    animation-delay: .5s;
+}
+#home h1:nth-child(2) span{
+    animation-delay: 1.5s;
+}
+#home h1:nth-child(3) span{
+    animation-delay: 2.5s;
+}
+/* END HOME */
+
+.brand h1{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: white;
+}
+.brand h1 span{
+    color: #5fa6c9;
+}
+/* HEADER */
+#header{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+}
+#header .header{
+    min-height: 8vh;
+    background-color: rgb(31, 30, 30, 0.70);
+    transition: 3s ease background-color;
+}
+#header .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+#header .nav-list ul{
+    list-style: none;
+    position: absolute;
+    background-color: rgb(31,30,30);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: .5s ease left;
+}
+#header .nav-list ul.active{
+    left: 12%;
+}
+#header .nav-list ul a{
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+#header .nav-list ul a::after{
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgb(240,248,255, 0.021);
+    font-size: 13rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after{
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+#header .nav-list ul li:hover a{
+    color: #84c0df;
+}
+
+#header .navigation{
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius:  50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transform: scale(.8);
+    margin-right: 20px
+}
+#header .navigation .bar{
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    z-index: -1;
+}
+#header  .navigation .bar::after,
+#header  .navigation .bar::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+#header .navigation .bar::after{
+    top: 8px
+}
+#header .navigation .bar::before{
+    bottom: 8px;
+}
+#header .navigation.active .bar::before{
+    bottom: 0;
+}
+#header .navigation.active .bar::after{
+    top: 0;
+}
+/* END OF HEADER */
+/* BIOGRAPHY */
+
+#bio .bio{
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+.section-title{
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgb(162, 142, 107);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2rem;
+    text-align: center;
+}
+.section-title span{
+    color: #2d5e77;
+}
+
+#bio .bio-top p{
+    font-size: 1.4rem;
+    margin: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+#bio .bio-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#bio .bio-item{
+    flex-basis: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    background-image: url(images/1bio.jpg);
+    background-size: cover;
+    margin: 10px 5%;
+}
+#bio .bio-item::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    opacity: .7;
+    z-index: -1;
+}
+#bio .bio-bottom .icon{
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+}
+#bio .bio-item h2{
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+#bio .bio-item ul{
+    font-size: 1.5rem;
+    color: white;
+    text-align: left;
+    line-height: 2rem;
+}
+#bio .bio-item p2{
+    font-size: 1.5rem;
+    color: white;
+    line-height: 2rem;
+    text-align: justify;
+}
+/* END BIOGRAPHY */
+
+/* SKILLS */
+#skills .skills{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+#skills .skills-header h1{
+    margin-bottom: 50px;
+}
+#skills .all-skills{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#skills .skills-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 10px;
+}
+#skills .skills-info{
+    padding: 10% 40%;
+    flex-basis: 30%;
+    height: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: row;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    color: whitesmoke;
+}
+#skills .skills-info h1{
+    font-size: 3rem;
+    font-weight: 500;
+}
+#skills .skills-img{
+    flex-basis:  50%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+#skills .skills-img:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .2;
+}
+#skills .skills-img img{
+    transition: .3s ease transform;
+}
+#skills .skills-item:hover .skills-img img{
+    transform: scale(1.1);
+}
+#skills .checked{
+    color: gold;
+    display: contents;
+    height: 100%;
+    width: 60%;
+}
+/* END SKILLS */
+
+/* HOBBIES */
+#hobbies .hobbies-container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#hobbies .hobbies{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.polaroid {
+    padding: 6px;
+    float: right;
+    width:  400px;
+    height: 250px;
+    object-fit: cover;
+  }
+  /* Clearfix (clear floats) */
+.hobbies-row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.hobbies-container h1{
+    font-size: 2rem;
+    text-align: justify;
+}
+/* END HOBBIES */
+
+/* REFERENCES */
+#references .reference-container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#references .reference{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.mySlides {
+    display:none
+}
+.w3-left, .w3-right, .w3-badge {
+    cursor:pointer
+}
+.w3-badge {
+    height:13px;
+    width:13px;
+    padding:0
+}
+/* END OF REFERENCES */
+
+/* FOOTER */
+#footer {
+    background-image: linear-gradient(30deg, #29323c 0%, #486163 50%);
+}
+#footer .footer{
+    min-height: 100px;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+#footer h2{
+    color: white;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#footer p{
+    color: white;
+}
+/* END OF FOOTER */
+
+/* Keyframes */
+@keyframes text_reveal_box{
+    50% {
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal {
+    100%{
+        color: white;
+    }
+}
+@keyframes text_reveal_myname {
+    100%{
+        color: #84c0df;
+    }
+}
+/* End Keyframes */
+
+/* Media Query for Desktop */
+/*header*/
+@media only screen and (min-width:1200px){
+#header .navigation{
+    display: none;
+}
+#header .nav-list ul{
+    position: initial;
+    display: block;
+    height: auto;
+    width: fit-content;
+    background-color: transparent;
+}
+#header .nav-list ul li{
+    display: inline-block;
+}
+#header .nav-list ul li a{
+    font-size: 1.8rem;
+}
+#header .nav-list ul a:after{
+    display: none;
+}
+}
